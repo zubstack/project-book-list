@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const books = require("./temp_db.js");
 
 const app = express();
 const port = 3000; // Puedes cambiar el puerto si es necesario
@@ -12,7 +13,13 @@ app.use(express.static(__dirname + "/public"));
 
 // Ruta principal que renderiza el archivo index.ejs
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index", {
+    books: books,
+  });
+});
+
+app.get("/books/add", (req, res) => {
+  res.render("add");
 });
 
 // Inicia el servidor
