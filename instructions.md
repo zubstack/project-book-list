@@ -30,6 +30,8 @@ After finishing reading books, it's common to forget essential details. To addre
 
 - Be able to sort your book entries by rating and recency.
 
+## Requirements
+
 1. **Database Persistence**
 
    - Utilize a PostgreSQL database for data persistence.

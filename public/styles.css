@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 1rem;
+}
+
+figure {
+  float: inline-start;
+  height: 180px;
+  margin-right: 12px;
+}
+
+a {
+  color: black;
+}
+
+.abook {
+  width: 60vw;
+  margin: auto;
+}
+
+.abook h2 {
+  font-size: 40px;
+}
+
+.abook small {
+  font-size: 12px;
+  color: rgb(113, 113, 113);
+  font-family: monospace;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 4rem;
+}
+
+.abook p {
+  margin-top: 2rem;
+  font-size: 23px;
+  font-family: fantasy;
+}
