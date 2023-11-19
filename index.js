@@ -1,9 +1,25 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const books = require("./temp_db.js");
+const { Client } = require("pg");
+
+const client = new Client({
+  host: "localhost",
+  port: 5432,
+  database: "books",
+  user: "zubstack",
+  password: "loto123",
+});
+
+client.connect();
+
+// (async () => {
+//   let res = await client.query("SELECT * FROM books;");
+//   console.log(res.rows);
+// })();
 
 const app = express();
-const port = 3000; // Puedes cambiar el puerto si es necesario
+const port = 3000;
 
 // Configuración para usar archivos EJS como vistas
 app.set("view engine", "ejs");
@@ -11,10 +27,12 @@ app.set("views", __dirname + "/views");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 
-// Ruta principal que renderiza el archivo index.ejs
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
+  const bookList = await client.query(
+    "SELECT title,author,recommendation,content AS review,ISBN FROM books INNER JOIN reviews ON reviews.book_id=books.id;"
+  );
   res.render("index", {
-    books: books,
+    books: bookList.rows,
   });
 });
 
@@ -22,7 +40,6 @@ app.get("/books/add", (req, res) => {
   res.render("add");
 });
 
-// Inicia el servidor
 app.listen(port, () => {
   console.log(`Servidor escuchando en http://localhost:${port}`);
 });
