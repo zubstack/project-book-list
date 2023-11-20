@@ -3,9 +3,107 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Agregar Nuevo Libro</title>
+    <style>
+      label {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      input {
+        margin-bottom: 16px;
+      }
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      .flex{
+        display: flex;
+        gap: 1rem;
+      }
+
+      #recommendation{
+        width: 30px;
+      }
+
+    </style>
   </head>
+
   <body>
-    Add a new book
+    <h2>Agregar Nuevo Libro</h2>
+
+    <form id="bookForm" method="post" action="/new">
+      <label for="title">Título:</label>
+      <input type="text" id="title" name="title" required />
+
+      <label for="author">Autor:</label>
+      <input type="text" id="author" name="author" required />
+
+      <div class="flex">
+        <label for="recommendation">Recomendación:</label>
+      <input type="number" id="recommendation" name="recommendation" pattern="[1-9]|10" maxlength="4" size="4" required></input>
+      </div>
+
+      <label for="review">Reseña:</label>
+      <textarea id="review" name="review"required></textarea>
+
+      <label for="isbn">ISBN:</label>
+      <input
+        type="text"
+        id="isbn"
+        name="isbn"
+        pattern="[0-9]{13}"
+        title="El ISBN debe contener 13 dígitos numéricos"
+        required
+      />
+
+      <!-- <button type="submit">Agregar Libro</button> -->
+      <button type="submit onclick="addBook()">Agregar Libro</button>
+
+    </form>
+
+    <script>
+      const books = [];
+      function addBook() {
+        // const title = document.getElementById("title").value;
+        // const author = document.getElementById("author").value;
+        // const recommendation = document.getElementById("recommendation").value;
+        // const review = document.getElementById("review").value;
+        // const isbn = document.getElementById("isbn").value;
+     
+        // // Validación simple de ISBN
+        // const isbnPattern = /^[0-9]{13}$/;
+        // if (!isbnPattern.test(isbn)) {
+        //   alert("El ISBN debe contener 13 dígitos numéricos.");
+        //   return;
+        // }
+
+        // const recommendationPattern = /^[1-9]|10$/
+        // if (!recommendationPattern.test(recommendation)) {
+        //   alert("La recomendacion debe de ir del 1 al 10.");
+        //   return;
+        // }
+        // const newBook = {
+        //   title,
+        //   author,
+        //   recommendation: parseInt(recommendation),
+        //   review,
+        //   isbn,
+        // };
+
+
+        // fetch('/new', {
+        //   method: 'POST',
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //   },
+        //   body: JSON.stringify(newBook),
+        // })
+        document.getElementById("bookForm").reset();
+
+      }
+    </script>
   </body>
 </html>

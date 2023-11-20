@@ -12,10 +12,8 @@ const client = new Client({
 });
 
 client.connect();
+// (() => {
 
-// (async () => {
-//   let res = await client.query("SELECT * FROM books;");
-//   console.log(res.rows);
 // })();
 
 const app = express();
@@ -38,6 +36,12 @@ app.get("/", async (req, res) => {
 
 app.get("/books/add", (req, res) => {
   res.render("add");
+});
+
+app.post("/new", (req, res) => {
+  const data = req.body;
+  console.log("data", data);
+  res.redirect("/");
 });
 
 app.listen(port, () => {

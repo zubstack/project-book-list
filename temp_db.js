@@ -1,43 +1,67 @@
 const books = [
   {
-    title: "The Great Gatsby",
-    author: "F. Scott Fitzgerald",
-    recommendation: 8,
+    title: "Cómo ganar amigos e influir sobre las personas",
+    author: "Dale Carnegie",
+    recommendation: 10,
     review:
-      "Fitzgerald's prose is as dazzling as the parties he describes. A compelling narrative of love, wealth, and disillusionment.Harper Lee's masterpiece is a powerful narrative that addresses profound societal issues with grace and humanity.Harper Lee's masterpiece is a powerful narrative that addresses profound societal issues with grace and humanity.Harper Lee's masterpiece is a powerful narrative that addresses profound societal issues with grace and humanity.Harper Lee's masterpiece is a powerful narrative that addresses profound societal issues with grace and humanity.",
-    ISBN: "9780743273565",
+      "La sabiduría de Carnegie sigue siendo relevante hoy en día, brindando consejos prácticos para el éxito personal y profesional. Un clásico de desarrollo personal que ofrece principios atemporales para mejorar las relaciones interpersonales y la influencia positiva.",
+    isbn: "9788491110195",
   },
   {
-    title: "To Kill a Mockingbird",
-    author: "Harper Lee",
-    recommendation: 8,
+    title: "El sutil arte de que te importe un carajo",
+    author: "Mark Manson",
+    recommendation: 9,
     review:
-      "Harper Lee's masterpiece is a powerful narrative that addresses profound societal issues with grace and humanity.Harper Lee's masterpiece is a powerful narrative that addresses profound societal issues with grace and humanity.Harper Lee's masterpiece is a powerful narrative that addresses profound societal issues with grace and humanity.Harper Lee's masterpiece is a powerful narrative that addresses profound societal issues with grace and humanity.Harper Lee's masterpiece is a powerful narrative that addresses profound societal issues with grace and humanity.",
-    ISBN: "9780061120084",
+      "Mark Manson ofrece una perspectiva directa y honesta que desafía convenciones, proporcionando una guía liberadora para una vida más auténtica.Un enfoque fresco y sin tapujos sobre cómo encontrar significado en la vida al deshacernos de expectativas irracionales y abrazar nuestras limitaciones.",
+    isbn: "9786079783772",
   },
   {
-    title: "1984",
-    author: "George Orwell",
-    recommendation: 8,
+    title: "Vendes o vendes",
+    author: "Grant Cardone",
+    recommendation: 9,
     review:
-      "Orwell's chilling vision of a surveillance state remains relevant, serving as a stark reminder of the importance of safeguarding liberty.Harper Lee's masterpiece is a powerful narrative that addresses profound societal issues with grace and humanity.Harper Lee's masterpiece is a powerful narrative that addresses profound societal issues with grace and humanity.Harper Lee's masterpiece is a powerful narrative that addresses profound societal issues with grace and humanity.",
-    ISBN: "9780451524935",
+      "Cardone ofrece un enfoque motivador y práctico para aquellos que buscan mejorar sus habilidades de venta y alcanzar el éxito financiero. Un libro centrado en las estrategias y mentalidad necesarias para tener éxito en las ventas, destacando la importancia de la dedicación y la acción.",
+    isbn: "9786073136374",
   },
   {
-    title: "The Hitchhiker's Guide to the Galaxy",
-    author: "Douglas Adams",
+    title: "Los secretos de la mente millonaria",
+    author: "T. Harv Eker",
     recommendation: 8,
     review:
-      "Adams' wit and humor shine in this intergalactic romp, making it a must-read for anyone in need of a good laugh and a dash of cosmic insight.Harper Lee's masterpiece is a powerful narrative that addresses profound societal issues with grace and humanity.Harper Lee's masterpiece is a powerful narrative that addresses profound societal issues with grace and humanity.Harper Lee's masterpiece is a powerful narrative that addresses profound societal issues with grace and humanity.Harper Lee's masterpiece is a powerful narrative that addresses profound societal issues with grace and humanity.",
-    ISBN: "9780345391803",
+      "Eker proporciona ideas valiosas sobre cómo transformar la relación con el dinero y adoptar hábitos que fomenten el éxito financiero a largo plazo. Un libro que explora la relación entre las creencias y los patrones de pensamiento con la riqueza, ofreciendo principios para cambiar la mentalidad financiera.",
+    isbn: "9780061336454",
   },
   {
-    title: "The Catcher in the Rye",
-    author: "J.D. Salinger",
+    title: "Hábitos atómicos",
+    author: "James Clear",
+    recommendation: 10,
+    review:
+      "Clear combina la investigación con ejemplos prácticos, ofreciendo una guía accesible para establecer hábitos que perduren.Un enfoque científico sobre cómo los pequeños cambios pueden tener un impacto significativo al construir hábitos poderosos para la mejora personal.",
+    isbn: "9780735211292",
+  },
+  {
+    title: "Todo está jodido",
+    author: "Mark Manson",
     recommendation: 8,
     review:
-      "Salinger captures the angst and confusion of youth with unparalleled authenticity. A timeless exploration of teenage rebellion and self-discovery.Harper Lee's masterpiece is a powerful narrative that addresses profound societal issues with grace and humanity.Harper Lee's masterpiece is a powerful narrative that addresses profound societal issues with grace and humanity.Harper Lee's masterpiece is a powerful narrative that addresses profound societal issues with grace and humanity.Harper Lee's masterpiece is a powerful narrative that addresses profound societal issues with grace and humanity.",
-    ISBN: "9780061120084",
+      "Con su estilo único, Manson aborda temas existenciales de manera entretenida, desafiando las convenciones y cuestionando las expectativas. Explorando la realidad de la vida y la inevitable lucha por encontrar significado, Manson ofrece una perspectiva irreverente y reflexiva.",
+    isbn: "9786070761654",
+  },
+  {
+    title: "Invicto",
+    author: "Fitness Revolucionario",
+    recommendation: 8,
+    review:
+      "Fitness Revolucionario ofrece una guía completa para aquellos que buscan transformar su bienestar físico y mental a través de hábitos sostenibles. Un enfoque integral para el fitness que va más allá del ejercicio, abordando la nutrición, el sueño y otros factores para lograr una salud óptima.",
+    isbn: "9788469752457",
+  },
+  {
+    title: "El efecto compuesto",
+    author: "Darren Hardy",
+    recommendation: 8,
+    review:
+      "Con ejemplos inspiradores, Hardy presenta el concepto del efecto compuesto de manera motivadora, instando a la reflexión sobre nuestras elecciones diarias. Explorando el poder de las pequeñas acciones consistentes a lo largo del tiempo, Hardy destaca cómo las decisiones diarias impactan el éxito a largo plazo.",
+    isbn: "9781948836572",
   },
 ];
 
