@@ -37,8 +37,14 @@ app.get("/", async (req, res) => {
   });
 });
 
-app.get("/books/add", (req, res) => {
+app.get("/books/dashboard", (req, res) => {
   res.render("add");
+});
+app.get("/books/add", (req, res) => {
+  res.render("compose", { data: [] });
+});
+app.get("/books/edit", (req, res) => {
+  res.render("compose", { data: ["data"] });
 });
 
 app.post("/new", async (req, res) => {
@@ -52,7 +58,7 @@ app.post("/new", async (req, res) => {
     "INSERT INTO reviews (content, book_id) VALUES ($1, $2);",
     [data.review, currentBookId]
   );
-  console.log("id", response.rows[0].id);
+  console.log("New book added");
   res.redirect("/");
 });
 
