@@ -30,7 +30,7 @@ app.use(express.static(__dirname + "/public"));
 
 app.get("/", async (req, res) => {
   const bookList = await client.query(
-    "SELECT title,author,recommendation,content AS review,ISBN FROM books INNER JOIN reviews ON reviews.book_id=books.id;"
+    "SELECT title,author,recommendation,content AS review,isbn FROM books INNER JOIN reviews ON reviews.book_id=books.id;"
   );
   res.render("index", {
     books: bookList.rows,
@@ -41,10 +41,18 @@ app.get("/books/dashboard", (req, res) => {
   res.render("add");
 });
 app.get("/books/add", (req, res) => {
-  res.render("compose", { data: [] });
+  res.render("compose");
 });
-app.get("/books/edit", (req, res) => {
-  res.render("compose", { data: ["data"] });
+app.get("/books/edit/:id", async (req, res) => {
+  const { id } = req.params;
+  const response = await client.query(
+    "SELECT title,author,recommendation,content AS review,isbn FROM books INNER JOIN reviews ON reviews.book_id=books.id WHERE books.id = $1;",
+    [parseInt(id)]
+  );
+
+  const [data] = response.rows;
+  res.render("edit", { data: { ...data, id } });
+  // res.render("compose");
 });
 
 app.post("/new", async (req, res) => {
@@ -59,6 +67,22 @@ app.post("/new", async (req, res) => {
     [data.review, currentBookId]
   );
   console.log("New book added");
+  res.redirect("/");
+});
+
+app.post("/edit/:id", async (req, res) => {
+  const data = req.body;
+  const { id } = req.params;
+  console.log("id", id);
+  console.log("data", data);
+  await client.query(
+    "UPDATE books SET title =$1, author =$2, recommendation =$3, isbn =$4 WHERE id =$5;",
+    [data.title, data.author, data.recommendation, data.isbn, parseInt(id)]
+  );
+  await client.query("UPDATE reviews SET content =$1 WHERE book_id =$2;", [
+    data.review,
+    parseInt(id),
+  ]);
   res.redirect("/");
 });
 
