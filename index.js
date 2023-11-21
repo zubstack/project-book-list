@@ -12,8 +12,11 @@ const client = new Client({
 });
 
 client.connect();
-// (() => {
-
+// (async () => {
+//   const id = await client.query(
+//     "INSERT INTO books (title, author, recommendation, isbn) VALUES ('To Kill a Mockingbird','Harper Lee', 8,'9780061120084') RETURNING id;"
+//   );
+//   console.log("id", id);
 // })();
 
 const app = express();
@@ -38,9 +41,18 @@ app.get("/books/add", (req, res) => {
   res.render("add");
 });
 
-app.post("/new", (req, res) => {
+app.post("/new", async (req, res) => {
   const data = req.body;
-  console.log("data", data);
+  const response = await client.query(
+    "INSERT INTO books (title, author, recommendation, isbn) VALUES ($1,$2,$3,$4) RETURNING id;",
+    [data.title, data.author, data.recommendation, data.isbn]
+  );
+  const currentBookId = response.rows[0].id;
+  await client.query(
+    "INSERT INTO reviews (content, book_id) VALUES ($1, $2);",
+    [data.review, currentBookId]
+  );
+  console.log("id", response.rows[0].id);
   res.redirect("/");
 });
 

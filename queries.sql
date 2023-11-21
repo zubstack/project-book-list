@@ -13,16 +13,19 @@ CREATE TABLE reviews (
     books(id)
 );
 
+INSERT INTO books (title,author, recommendation, ISBN) VALUES ('The Great Gatsby','F. Scott Fitzgerald', 7,'9780743273565') RETURNING id;
+
+
 
 INSERT INTO books (title,author, recommendation, ISBN)
 VALUES ('The Great Gatsby','F. Scott Fitzgerald', 7,'9780743273565'),
-('To Kill a Mockingbird','Harper Lee', 8,'9780061120084'),
+(   ),
 ('1984','George Orwell"', 9,'9780451524935'),
 ('The Catcher in the Rye','J.D. Salinger', 10,'9780061120084');
 
 
 
-SELECT author,recommendation,content,ISBN
+SELECT author,recommendation,content AS review,ISBN
 FROM books
 INNER JOIN reviews ON reviews.book_id=books.id;
 
