@@ -37,8 +37,13 @@ app.get("/", async (req, res) => {
   });
 });
 
-app.get("/books/dashboard", (req, res) => {
-  res.render("add");
+app.get("/books/dashboard", async (req, res) => {
+  const bookList = await client.query(
+    "SELECT id, title, author, isbn FROM books;"
+  );
+  res.render("dashboard", {
+    books: bookList.rows,
+  });
 });
 app.get("/books/add", (req, res) => {
   res.render("compose");
@@ -84,6 +89,24 @@ app.post("/edit/:id", async (req, res) => {
     parseInt(id),
   ]);
   res.redirect("/");
+});
+app.get("/delete/:id", async (req, res) => {
+  const { id } = req.params;
+  console.log("id", id);
+  // await client.query(
+  //   "UPDATE books SET title =$1, author =$2, recommendation =$3, isbn =$4 WHERE id =$5;",
+  //   [data.title, data.author, data.recommendation, data.isbn, parseInt(id)]
+  // );
+  // await client.query("UPDATE reviews SET content =$1 WHERE book_id =$2;", [
+  //   data.review,
+  //   parseInt(id),
+  // ]);
+  const bookList = await client.query(
+    "SELECT id, title, author, isbn FROM books;"
+  );
+  res.render("dashboard", {
+    books: bookList.rows,
+  });
 });
 
 app.listen(port, () => {

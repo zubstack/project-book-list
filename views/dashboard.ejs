@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 90%;
+        margin-top: 20px;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Dashboard</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>ISBN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% books.forEach(function(book) { %>
+        <tr>
+          <td><%= book.title %> - <%= book.author %></td>
+          <td><%= book.isbn %></td>
+          <td><a href="/books/edit/<%= book.id %>">Editar</a></td>
+          <td><button id="btn_delete">Eliminar</button></td>
+          <% }); %>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+  <script src="dashboard.js"></script>
+</html>
