@@ -1,3 +1,4 @@
+require("express-async-errors");
 const express = require("express");
 const bodyParser = require("body-parser");
 const { Client } = require("pg");
@@ -19,6 +20,13 @@ app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
+
+const errorHandling = (err, req, res, next) => {
+  res.status(500).json({
+    msg: err.message,
+    success: false,
+  });
+};
 
 async function getBookList() {
   return await client.query(
@@ -86,6 +94,10 @@ app.get("/books/edit/:id", async (req, res) => {
   const { id } = req.params;
   const response = await getBook(parseInt(id));
   const [data] = response.rows;
+  console.log("data", data);
+  if (!data) {
+    throw new Error("Client tried an unexisting id");
+  }
   res.render("edit", { data: { ...data, id } });
 });
 
@@ -111,6 +123,10 @@ app.post("/delete/:id", async (req, res) => {
 app.get("/*", (req, res) => {
   res.render("not-found");
 });
+
+// Middlewares
+
+app.use(errorHandling);
 
 app.listen(port, () => {
   console.log(`Servidor escuchando en http://localhost:${port}`);
