@@ -108,6 +108,10 @@ app.post("/delete/:id", async (req, res) => {
   res.redirect("/books/dashboard");
 });
 
+app.get("/*", (req, res) => {
+  res.render("not-found");
+});
+
 app.listen(port, () => {
   console.log(`Servidor escuchando en http://localhost:${port}`);
 });
