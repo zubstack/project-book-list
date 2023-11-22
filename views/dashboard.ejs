@@ -38,11 +38,14 @@
           <td><%= book.title %> - <%= book.author %></td>
           <td><%= book.isbn %></td>
           <td><a href="/books/edit/<%= book.id %>">Editar</a></td>
-          <td><button id="btn_delete">Eliminar</button></td>
+          <td>
+            <form action="/delete/<%= book.id %>" method="post">
+              <button type="submit">Eliminar</button>
+            </form>
+          </td>
           <% }); %>
         </tr>
       </tbody>
     </table>
   </body>
-  <script src="dashboard.js"></script>
 </html>
