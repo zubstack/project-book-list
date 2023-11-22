@@ -4,10 +4,6 @@
   box-sizing: border-box;
 }
 
-body {
-  padding: 1rem;
-}
-
 figure {
   float: inline-start;
   margin-right: 12px;
@@ -18,7 +14,20 @@ img {
 }
 
 a {
-  color: black;
+  color: rgb(71, 71, 71);
+  text-decoration: none;
+}
+
+#dashboard_link {
+  padding-top: 5px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: aqua;
 }
 
 .abook {
@@ -44,4 +53,40 @@ a {
   margin-top: 20px;
   font-size: 23px;
   font-family: fantasy;
+}
+
+.container {
+  padding: 2rem 4rem;
+}
+
+table {
+  border-collapse: collapse;
+  width: 90%;
+  margin-top: 20px;
+}
+
+th,
+td {
+  border: 1px solid #9a9a9a;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.btn_container {
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.btn_final {
+  padding: 1rem;
+  background-color: rgb(136, 228, 228);
+  color: black;
+}
+
+.btn_final:hover {
+  background-color: rgb(25, 189, 189);
 }

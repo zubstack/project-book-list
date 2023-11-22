@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <h1>Lista de libros</h1>
+    <header><%- include('./partials/header'); %></header>
     <% books.forEach(function(book) { %>
     <div
       class="abook"
@@ -19,7 +19,7 @@
       data-date="2023-08-02"
     >
       <figure>
-        <a href="/book/NegotiateAnything"
+        <a href="/book/dashboard"
           ><img
             src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-M.jpg"
             loading="lazy"
@@ -27,9 +27,7 @@
         /></a>
       </figure>
       <h2>
-        <a href="/book/NegotiateAnything"
-          ><%= book.title %> - <%= book.author %></a
-        >
+        <a href="/book/dashboard"><%= book.title %> - <%= book.author %></a>
       </h2>
       <small
         ><p>Date read: <span>2023-08-02 </span></p>

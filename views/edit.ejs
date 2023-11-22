@@ -4,10 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Editar</title>
+    <link rel="stylesheet" href="/styles.css" />
+
     <style>
+
+      h2{
+        margin-bottom: 1rem;
+      }
       label {
         display: block;
         margin-bottom: 8px;
+        font-weight: bold;
       }
 
       input {
@@ -49,7 +56,10 @@
   </head>
 
   <body>
-    <h2>Editar Nuevo Libro</h2>
+    <header><%- include('./partials/header'); %></header>
+
+   <div class="container">
+    <h2>Editar Libro</h2>
 
     <form id="bookForm" method="post" action="/edit/<%= data.id %>">
       <label for="title">Título:</label>
@@ -76,9 +86,10 @@
          value="<%= data.isbn %>" required
       />
 
-      <button id="form_btn" type="submit">Editar Libro</button>
+      <button class="btn_final" id="form_btn" type="submit">Editar Libro</button>
 
     </form>
+   </div>
   </body>
   <script>
     document.getElementById("review").value ="<%= data.review %>";

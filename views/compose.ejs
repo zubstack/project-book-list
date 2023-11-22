@@ -4,10 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Agregar Nuevo Libro</title>
+    <link rel="stylesheet" href="/styles.css" />
+
     <style>
+
+      h2{
+        margin-bottom: 1rem;
+      }
       label {
         display: block;
         margin-bottom: 8px;
+        font-weight: bold;
       }
 
       input {
@@ -32,7 +39,10 @@
   </head>
 
   <body>
-    <h2>Agregar Nuevo Libro</h2>
+    <header><%- include('./partials/header'); %></header>
+
+    <div class="container">
+      <h2>Agregar Nuevo Libro</h2>
 
     <form id="bookForm" method="post" action="/new">
       <label for="title">Título:</label>
@@ -60,9 +70,10 @@
       />
 
       <!-- <button type="submit">Agregar Libro</button> -->
-      <button type="submit onclick="addBook()">Agregar Libro</button>
+      <button class="btn_final" type="submit onclick="addBook()">Agregar Libro</button>
 
     </form>
+    </div>
 
     <script>
       const books = [];

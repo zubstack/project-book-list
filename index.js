@@ -1,6 +1,5 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const books = require("./temp_db.js");
 const { Client } = require("pg");
 
 const client = new Client({
@@ -12,17 +11,10 @@ const client = new Client({
 });
 
 client.connect();
-// (async () => {
-//   const id = await client.query(
-//     "INSERT INTO books (title, author, recommendation, isbn) VALUES ('To Kill a Mockingbird','Harper Lee', 8,'9780061120084') RETURNING id;"
-//   );
-//   console.log("id", id);
-// })();
 
 const app = express();
 const port = 3000;
 
-// Configuración para usar archivos EJS como vistas
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -45,19 +37,19 @@ app.get("/books/dashboard", async (req, res) => {
     books: bookList.rows,
   });
 });
+
 app.get("/books/add", (req, res) => {
   res.render("compose");
 });
+
 app.get("/books/edit/:id", async (req, res) => {
   const { id } = req.params;
   const response = await client.query(
     "SELECT title,author,recommendation,content AS review,isbn FROM books INNER JOIN reviews ON reviews.book_id=books.id WHERE books.id = $1;",
     [parseInt(id)]
   );
-
   const [data] = response.rows;
   res.render("edit", { data: { ...data, id } });
-  // res.render("compose");
 });
 
 app.post("/new", async (req, res) => {
@@ -90,6 +82,7 @@ app.post("/edit/:id", async (req, res) => {
   ]);
   res.redirect("/");
 });
+
 app.post("/delete/:id", async (req, res) => {
   const { id } = req.params;
   console.log("id", id);
